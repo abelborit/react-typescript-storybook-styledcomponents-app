@@ -110,7 +110,8 @@ También se puede probar usando la extensión Live Server de Visual Studio Code.
   - eslint-plugin-storybook: https://github.com/storybookjs/eslint-plugin-storybook#readme
 - Styled Components: https://styled-components.com/
   - `npm install styled-components`
-- ejemplo
+- storybook-addon-a11y: https://storybook.js.org/addons/@storybook/addon-a11y
+  - `npm i --dev @storybook/addon-a11y`
 
 ### \* NOTAS:
 

@@ -327,6 +327,8 @@ textarea {
 }
 
 .list-item.TASK_ARCHIVED input[type="text"] {
+  /* con este color #a0aec0 marca como un error de accesibilidad gracias a la instalación de storybook-addon-a11y */
+  /* color: #a0aec0; */
   color: #4a5568;
   text-decoration: line-through;
 }
