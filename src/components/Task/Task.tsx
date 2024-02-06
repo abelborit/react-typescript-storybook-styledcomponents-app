@@ -1,7 +1,6 @@
 /* https://storybook.js.org/tutorials/intro-to-storybook/react/en/simple-component/ */
-/* https://github.com/chromaui/learnstorybook-code/blob/master/src/index.css */
 
-interface TaskInterface {
+export interface TaskInterface {
   id: string;
   title: string;
   state: string;
