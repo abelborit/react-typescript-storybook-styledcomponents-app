@@ -1,6 +1,6 @@
 import "./button.css";
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -49,3 +49,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;
