@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { within, userEvent, expect } from '@storybook/test';
+import type { Meta, StoryObj } from "@storybook/react";
+import { within, userEvent, expect } from "@storybook/test";
 
-import { Page } from './Page';
+import { Page } from "./Page";
 
 const meta = {
-  title: 'Example/Page',
+  title: "Example/Page",
   component: Page,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } satisfies Meta<typeof Page>;
 
@@ -20,13 +20,16 @@ export const LoggedOut: Story = {};
 // More on interaction testing: https://storybook.js.org/docs/writing-tests/interaction-testing
 export const LoggedIn: Story = {
   play: async ({ canvasElement }) => {
+    // console.log({ canvasElement });
+
     const canvas = within(canvasElement);
-    const loginButton = canvas.getByRole('button', { name: /Log in/i });
+    /*  seleccionar un elemento del DOM que tiene el rol de "button" y cuyo texto coincida con la expresión regular /Log in/i, lo que significa que buscará un botón con el texto "Log in" (sin importar si está en mayúsculas o minúsculas debido al modificador i de la expresión regular). */
+    const loginButton = canvas.getByRole("button", { name: /Log in/i });
     await expect(loginButton).toBeInTheDocument();
     await userEvent.click(loginButton);
     await expect(loginButton).not.toBeInTheDocument();
 
-    const logoutButton = canvas.getByRole('button', { name: /Log out/i });
+    const logoutButton = canvas.getByRole("button", { name: /Log out/i });
     await expect(logoutButton).toBeInTheDocument();
   },
 };
