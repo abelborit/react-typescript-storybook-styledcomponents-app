@@ -6,7 +6,8 @@ import * as TaskStories from "./Task.stories";
 
 /* Meta */
 /* Los Decoradores (decorators) son una forma de proporcionar envoltorios arbitrarios a las historias. En este caso, estamos usando una clave decoradora en la exportación predeterminada para agregar algo de padding alrededor del componente renderizado. También se pueden utilizar para envolver historias en "proveedores", es decir, componentes de biblioteca que establecen el contexto de React. */
-const meta = {
+/* se coloca const meta: Meta = {} para que no de errores de "The inferred type of 'meta' cannot be named without a reference to '../../node_modules/@storybook/react/dist/types-0fc72a6d'. This is likely not portable. A type annotation is necessary.ts(2742)" eso también se soluciona comentando los decorators: [] */
+const meta: Meta = {
   title: "Guide_Storybook/TaskList",
   component: TaskList,
   tags: ["autodocs"],
@@ -44,7 +45,7 @@ export const Default: Story = {
 export const WithPinnedTasks: Story = {
   args: {
     tasks: [
-      ...Default.args.tasks.slice(0, 5),
+      ...Default.args!.tasks.slice(0, 5),
       { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
     ],
   },
