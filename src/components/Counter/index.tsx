@@ -37,7 +37,7 @@ export const Counter = ({
         onClick={() => handleIncreaseBy(increaseValueBy)}
         aria-label="increaseButton"
       >
-        +1
+        +{increaseValueBy}
       </ButtonStyled>
 
       <ButtonResetStyled
@@ -52,7 +52,7 @@ export const Counter = ({
         onClick={() => handleIncreaseBy(-increaseValueBy)}
         aria-label="decreaseButton"
       >
-        -1
+        -{increaseValueBy}
       </ButtonStyled>
     </ContainerStyled>
   );
