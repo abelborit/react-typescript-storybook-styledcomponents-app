@@ -3,13 +3,33 @@ import { Counter } from "./index";
 import { mockCounterValueProps } from "./Counter.mock";
 import { expect, userEvent, within } from "@storybook/test";
 
-const meta = {
+const meta: Meta = {
   title: "My_Examples/Counter",
   component: Counter,
+  /* "tags" para que tenga una documentación del componente y sus casos de uso que se genera de forma automática con algunas configuraciones en la interface del componente como tal que son con comentarios */
   tags: ["autodocs"],
+  /* "parameters" son el método de Storybook para definir metadatos estáticos para historias. */
   parameters: {
     // layout: "centered",
+    // backgrounds: {
+    //   default: "dark", // "light"
+    // },
   },
+  /* "decorators" son un mecanismo para envolver un componente en un marcado arbitrario al representar una historia. Los componentes a menudo se crean con suposiciones sobre "dónde" se representan. Sus estilos pueden esperar un tema o un contenedor de diseño, o su interfaz de usuario puede esperar contextos o proveedores de datos específicos. */
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: "1rem",
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          borderRadius: "16px",
+        }}
+      >
+        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <Story />
+      </div>
+    ),
+  ],
   /* "argTypes" para realizar configuraciones a los argumentos: https://github.com/storybookjs/storybook/blob/91e9dee33faa8eff0b342a366845de7100415367/addons/controls/README.md#control-annotations */
   argTypes: {},
 } satisfies Meta<typeof Counter>;
