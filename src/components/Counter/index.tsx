@@ -23,19 +23,35 @@ export const Counter = ({
   return (
     <ContainerStyled>
       <p>Este es un componente de contador</p>
-      <p>
+      {/* El atributo aria-label no está bien soportado en un elemento <p> sin un atributo de rol válido. */}
+      {/* <p aria-label="counterState">
+        <b>Counter: </b> {counterState}
+      </p> */}
+
+      {/* Una alternativa común es utilizar un atributo data-testid para identificar la etiqueta <p> en el componente y luego seleccionarla en las pruebas unitarias. */}
+      <p data-testid="counterState">
         <b>Counter: </b> {counterState}
       </p>
 
-      <ButtonStyled onClick={() => handleIncreaseBy(increaseValueBy)}>
+      <ButtonStyled
+        onClick={() => handleIncreaseBy(increaseValueBy)}
+        aria-label="increaseButton"
+      >
         +1
       </ButtonStyled>
 
-      <ButtonResetStyled onClick={handleReset} disabled={counterState == 0}>
+      <ButtonResetStyled
+        onClick={handleReset}
+        disabled={counterState == 0}
+        aria-label="resetButton"
+      >
         Reset
       </ButtonResetStyled>
 
-      <ButtonStyled onClick={() => handleIncreaseBy(-increaseValueBy)}>
+      <ButtonStyled
+        onClick={() => handleIncreaseBy(-increaseValueBy)}
+        aria-label="decreaseButton"
+      >
         -1
       </ButtonStyled>
     </ContainerStyled>
