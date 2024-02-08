@@ -3,19 +3,24 @@ import { Counter } from "./index";
 import { mockCounterValueProps } from "./Counter.mock";
 import { expect, userEvent, within } from "@storybook/test";
 
+/* NOTA: se están estableciendo parámetros a esta historia sobre backgrounds y también de forma global sobre los backgrounds en el preview.ts pero los parámetros más específicos tienen prioridad, es decir, un parámetro de historia específico (como en este caso) sobrescribe un parámetro global */
 const meta: Meta = {
   title: "My_Examples/Counter",
   component: Counter,
   /* "tags" para que tenga una documentación del componente y sus casos de uso que se genera de forma automática con algunas configuraciones en la interface del componente como tal que son con comentarios */
   tags: ["autodocs"],
-  /* "parameters" son el método de Storybook para definir metadatos estáticos para historias. */
+  /* "parameters" son un conjunto de metadatos estáticos con nombre sobre una historia, que normalmente se utilizan para controlar el comportamiento de las funciones y complementos de Storybook. */
   parameters: {
     // layout: "centered",
-    // backgrounds: {
-    //   default: "dark", // "light"
-    // },
+    backgrounds: {
+      values: [
+        { name: "light", value: "#fff" },
+        { name: "dark", value: "#333" },
+        { name: "red", value: "#c00" },
+      ],
+    },
   },
-  /* "decorators" son un mecanismo para envolver un componente en un marcado arbitrario al representar una historia. Los componentes a menudo se crean con suposiciones sobre "dónde" se representan. Sus estilos pueden esperar un tema o un contenedor de diseño, o su interfaz de usuario puede esperar contextos o proveedores de datos específicos. */
+  /* "decorators" es una forma de envolver una historia con una funcionalidad adicional de "renderizado". Muchos complementos definen decoradores para aumentar sus historias con renderizado adicional o recopilar detalles sobre cómo se representa su historia. Los componentes a menudo se crean con suposiciones sobre "dónde" se representan y sus estilos pueden esperar un tema o un contenedor de diseño, o su interfaz de usuario puede esperar contextos o proveedores de datos específicos, etc. Este decorators se aplica a todos las historias de este componente */
   decorators: [
     (Story) => (
       <div
@@ -95,6 +100,21 @@ export const CounterValue10: Story = {
   args: {
     ...mockCounterValueProps.counterValue10,
   },
+  /* Este decorators se aplica solo a esta historia de este componente */
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: "1rem",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
+          borderRadius: "16px",
+        }}
+      >
+        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const CounterValue20: Story = {
