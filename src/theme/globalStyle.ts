@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import { theme } from "./theme";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   a{
-    color:${() => theme.color.PRIMARY[300]};
-    text-decoration: none;
+    color:${() => theme.color.SUCCESS[900]};
+    font-weight:bold
   }
 `;
 

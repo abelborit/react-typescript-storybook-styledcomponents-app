@@ -23,6 +23,9 @@ export const Counter = ({
   return (
     <ContainerStyled>
       <p>Este es un componente de contador</p>
+      <a href="http://localhost:6006/?path=/docs/my-examples-counter--docs">
+        Este es un link que tiene estilos globales
+      </a>
       {/* El atributo aria-label no está bien soportado en un elemento <p> sin un atributo de rol válido. */}
       {/* <p aria-label="counterState">
         <b>Counter: </b> {counterState}

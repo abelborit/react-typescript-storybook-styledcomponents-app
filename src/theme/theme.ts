@@ -17,6 +17,11 @@ export const theme = {
       300: "#d0c5ff",
       400: "#b9a8ff",
     },
+    SUCCESS: {
+      700: "#5DDB92",
+      800: "#42D580",
+      900: "#2DC96F",
+    },
   },
   effect: {
     darkShadow: {
